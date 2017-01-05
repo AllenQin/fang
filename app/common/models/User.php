@@ -35,6 +35,18 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => '用户id',
+            'username' => '用户名',
+            'email' => '用户邮箱',
+            'status' => '状态',
+            'created_at' => '注册时间',
+            'updated_at' => '资料更新时间',
+        ];
+    }
+
     /**
      * @inheritdoc
      */

@@ -18,7 +18,7 @@ class m130524_201442_init extends Migration
             'password_hash' => $this->string()->notNull()->comment('user password'),
             'password_reset_token' => $this->string()->unique()->comment('user password token'),
             'email' => $this->string()->notNull()->unique()->comment('user email'),
-            'status' => $this->smallInteger()->notNull()->defaultValue(10)->unsigned()->comment('user status 1:already active, 10:not active'),
+            'status' => $this->smallInteger()->notNull()->defaultValue(10)->unsigned()->comment('user status 0:delete , 10:already active'),
             'created_at' => $this->integer(1)->unsigned()->notNull()->comment('user register timestamp'),
             'updated_at' => $this->integer(1)->unsigned()->notNull()->comment('user info update timestamp'),
         ], $tableOptions);
