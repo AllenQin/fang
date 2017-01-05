@@ -4,7 +4,7 @@ return [
     'language' => 'zh-CN',
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\MemCache',
+            'class' => 'yii\caching\FileCache',
         ],
     ],
 ];
