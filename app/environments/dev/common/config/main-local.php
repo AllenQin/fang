@@ -3,10 +3,17 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
+            'dsn' => 'mysql:host=localhost;dbname=fang',
             'username' => 'root',
-            'password' => '',
+            'password' => 'root',
             'charset' => 'utf8',
+            'tablePrefix' => 'fang_',
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0,
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -17,4 +24,5 @@ return [
             'useFileTransport' => true,
         ],
     ],
+    'language' => 'zh-CN',
 ];
