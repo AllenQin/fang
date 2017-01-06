@@ -142,6 +142,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays live page
+     * html5
+     *
+     */
+    public function actionLive()
+    {
+        return $this->render('live');
+    }
+
+    /**
      * Signs user up.
      *
      * @return mixed
