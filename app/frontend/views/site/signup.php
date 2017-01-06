@@ -11,14 +11,11 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
-ws = new WebSocket("ws://msg.fang.lc/ws/ch1");
+ws = new WebSocket("ws://msg.fang.lc/ws/32");
 ws.onmessage = function(evt){
     console.log(evt.data);
     var msg = JSON.parse(evt.data);
     console.log(msg);
-
-    console.log(msg.type);
-    console.log(msg.content);
 };
 </script>
 <div class="site-signup">

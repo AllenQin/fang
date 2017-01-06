@@ -20,31 +20,16 @@ class MsgController extends Controller
             $queue = "channel_msg";
             $itemInfo = $redis->lpop($queue);
 
-            // get info from queue json formate
-            /*
-            $itemInfo = [
-                'channel_id' => 'ch1',
-                'type' => 'msg',
-                'content' => 'hello world',
-                'uid' => '2006058',
-                'created_at' => time(),
-            ];
-             */
-            if (!$itemInfo) {
+            if (!$itemInfo)
                 continue;
-            }
 
-            $itemInfo = json_decode($itemInfo, true);
-            $channel_id = $itemInfo['channel_id'];
+            $channel_id = (json_decode($itemInfo, true))['channel_id'];
 
             // build the param
-            $body = json_encode($itemInfo);
-            $res = $client->request('POST', "http://msg.fang.lc/pub?id={$channel_id}", ['body' => $body]);
-
-            echo $res->getStatusCode() . PHP_EOL;
+            $res = $client->request('POST', "http://msg.fang.lc/pub?id={$channel_id}", ['body' => $itemInfo]);
 
             // write the storage queue
-            $result = $redis->lpush('channel_msg_storage', $body);
+            $result = $redis->lpush('channel_msg_storage', $itemInfo);
             if (!$result) {
                 // write the storage queue fail
             }
@@ -59,17 +44,13 @@ class MsgController extends Controller
     {
         $redis = Yii::$app->redis;
         while(true) {
-            $queue = "channel_msg_storage";
-            $itemInfo = $redis->lpop($queue);
-
-            if (!$itemInfo) {
+            $itemInfo = $redis->lpop("channel_msg_storage");
+            if (!$itemInfo)
                 continue;
-            }
 
-            $itemInfo = json_decode($itemInfo, true);
             $model = new Message();
-            if ($model->load($itemInfo) && $model->save()) {
-                echo '写入数据...' . PHP_EOL;
+            if ( ($model->attributes = json_decode($itemInfo, true)) && $model->save()) {
+                // storage success
             } else {
                 //  storage error
             }
@@ -82,8 +63,8 @@ class MsgController extends Controller
 
         $queue = "channel_msg";
         $itemInfo = [
-            'channel_id' => 'ch1',
-            'type' => 'msg',
+            'channel_id' => '32',
+            'type' => 1,
             'content' => 'hello world',
             'uid' => '2006058',
             'created_at' => time(),
