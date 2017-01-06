@@ -15,6 +15,7 @@ class MsgController extends Controller
     {
         $client = new \GuzzleHttp\Client();
         $redis = Yii::$app->redis;
+        $msg_url = Yii::$app->params['msg_url'];
         while (true) {
 
             $queue = "channel_msg";
@@ -26,7 +27,7 @@ class MsgController extends Controller
             $channel_id = (json_decode($itemInfo, true))['channel_id'];
 
             // build the param
-            $res = $client->request('POST', "http://msg.fang.lc/pub?id={$channel_id}", ['body' => $itemInfo]);
+            $res = $client->request('POST', "{$msg_url}/pub?id={$channel_id}", ['body' => $itemInfo]);
 
             // write the storage queue
             $result = $redis->lpush('channel_msg_storage', $itemInfo);
