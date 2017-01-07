@@ -23,6 +23,6 @@ video {
 }
 </style>
 <video controls autoplay class="video">  
-    <source src="http://live.allenqin.com/fang/20170107.m3u8" type="application/vnd.apple.mpegurl" />
+    <source src="http://fang02.oss-cn-hangzhou.aliyuncs.com/record/fang/20170107_7.m3u8" type="application/vnd.apple.mpegurl" />
     <p class="warning">Your browser does not support HTML5 video.</p>  
 </video>
