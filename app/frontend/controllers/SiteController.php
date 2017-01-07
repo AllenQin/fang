@@ -148,7 +148,11 @@ class SiteController extends Controller
      */
     public function actionLive()
     {
-        return $this->render('live');
+        $data = [
+            'rtmpurl' => Yii::$app->params['rtmp_url'],
+            'streamurl' => '20170107?vhost=live.allenqin.com'
+        ];
+        return $this->render('live', $data);
     }
 
     /**
