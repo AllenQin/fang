@@ -150,7 +150,7 @@ class SiteController extends Controller
     {
         $data = [
             'rtmpurl' => Yii::$app->params['rtmp_url'],
-            'streamurl' => '20170107_sd'
+            'streamurl' => '20170107_sd.flv'
         ];
         return $this->render('live', $data);
     }

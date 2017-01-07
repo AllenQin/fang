@@ -16,5 +16,5 @@ $this->params['breadcrumbs'][] = $this->title;
 	</p> <small>关键词 <cite>朝阳</cite><cite>CBD</cite></small>
 </blockquote>
 <div style="width: 640px; height: 360px; "azimuth: >
-    <script type="text/javascript" src="/js/player/sewise.player.min.js?server=live&type=rtmp&streamurl=<?php echo $rtmpurl.$streamurl;?>&autostart=true&pid=&shifttime=&buffer=3&lang=en_US&logo=&title=LiveVideo&skin=liveWhite"></script>
+    <script type="text/javascript" src="/js/player/sewise.player.min.js?server=live&type=flv&streamurl=<?php echo $rtmpurl.$streamurl;?>&autostart=true&pid=&shifttime=&buffer=3&lang=en_US&logo=&title=LiveVideo&skin=liveWhite"></script>
 </div>
