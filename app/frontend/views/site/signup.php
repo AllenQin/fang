@@ -10,14 +10,6 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<script>
-ws = new WebSocket("ws://msg.fang.lc/ws/32");
-ws.onmessage = function(evt){
-    console.log(evt.data);
-    var msg = JSON.parse(evt.data);
-    console.log(msg);
-};
-</script>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
