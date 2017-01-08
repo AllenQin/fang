@@ -151,6 +151,7 @@ class SiteController extends Controller
     {
         $list = Message::find()
         ->asArray()
+        ->orderBy('id DESC')
         ->limit(4)
         ->all();
         
