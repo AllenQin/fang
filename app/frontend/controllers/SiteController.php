@@ -146,11 +146,12 @@ class SiteController extends Controller
      * html5
      *
      */
-    public function actionLive()
+    public function actionLive($room = 32)
     {
         $data = [
             'rtmpurl' => Yii::$app->params['rtmp_url'],
-            'streamurl' => '/20170107_sd'
+            'streamurl' => '/20170107_sd',
+            'room' => $room,
         ];
         return $this->render('live', $data);
     }
@@ -223,5 +224,33 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    
+    /**
+     * 发送消息
+     */
+    public function actionMsg()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if (!Yii::$app->request->isAjax) {
+            return ['code' => 400, 'msg' => '错误的请求方式'];
+        }
+        
+        // 写入队列数据
+        $request = Yii::$app->request;
+        $redis = Yii::$app->redis;
+        
+        $queue = "channel_msg";
+        $itemInfo = [
+            'channel_id' => $request->post('room'),
+            'type' => 1,
+            'content' => $request->post('content'),
+            'uid' => '2006058',
+            'created_at' => time(),
+            'updated_at' => time(),
+            'status' => 1,
+        ];
+        $result = $redis->lpush($queue, json_encode($itemInfo));
+        return ['code' => 200, 'msg' => '发送成功'];
     }
 }
