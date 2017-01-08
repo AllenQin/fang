@@ -83,7 +83,7 @@ $this->registerJsFile('/js/message.js', ['depends' => JqueryAsset::className()])
 
 </style>
 <video controls autoplay class="video">  
-    <source src="http://fang.allenqin.com/record/fang/20170107_7.m3u8" type="application/vnd.apple.mpegurl" />
+    <source src="http://live.allenqin.com/fang/20170108.m3u8" type="application/vnd.apple.mpegurl" />
     <p class="warning">Your browser does not support HTML5 video.</p>  
 </video>
 
