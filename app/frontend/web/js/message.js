@@ -45,7 +45,7 @@ $(function(){
 		
 		var img = $("<img/>")
 		img.addClass('img-circle');
-		img.attr("src", "/images/avatar/1.jpeg");
+		img.attr("src", "/images/avatar/"+config.avaratnum+".jpeg");
 		avatar.append(img);
 		
 		var tip = $("<p></p>");

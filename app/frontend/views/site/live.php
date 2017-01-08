@@ -21,7 +21,7 @@ $this->registerJsFile('/js/message.js', ['depends' => JqueryAsset::className()])
 {
     width:95%;
     height:260px;
-    background:#fafafa;
+    background:#c3c3c3;
     border-radius:6px;
     padding-top:10px;
 }
@@ -104,5 +104,6 @@ echo Html::button('发送', ['class' => 'btn btn-primary send-button']);
 		msgurl:"<?php echo Yii::$app->params['www_url'].'/site/msg';?>",
 		room:"<?php echo $room;?>",
 		socketurl: "<?php echo Yii::$app->params['msg_url'].'/ws/';?>",
+		avaratnum : "<?php echo rand(1, 3)?>",
 	};
 </script>
