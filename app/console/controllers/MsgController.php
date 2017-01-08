@@ -30,7 +30,9 @@ class MsgController extends Controller
             $res = $client->request('POST', "{$msg_url}/pub?id={$channel_id}", ['body' => $itemInfo]);
 
             // write the storage queue
-            $result = $redis->lpush('channel_msg_storage', $itemInfo);
+            $itemInfo = json_decode($itemInfo, true);
+            unset($itemInfo['avatarnum']);
+            $result = $redis->lpush('channel_msg_storage', json_encode($itemInfo));
             if (!$result) {
                 // write the storage queue fail
             }

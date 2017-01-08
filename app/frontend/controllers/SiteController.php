@@ -249,6 +249,7 @@ class SiteController extends Controller
             'created_at' => time(),
             'updated_at' => time(),
             'status' => 1,
+            'avatarnum' => $request->post('avatarnum'),
         ];
         $result = $redis->lpush($queue, json_encode($itemInfo));
         return ['code' => 200, 'msg' => '发送成功'];

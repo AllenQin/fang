@@ -8,7 +8,7 @@ $(function(){
 			return false;
 		}
 		
-		var data = {'content': content, 'room':config.room};
+		var data = {'content': content, 'room':config.room, 'avatarnum':config.avaratnum};
 		$.post(
 			config.msgurl, 
 			data, 
@@ -45,7 +45,7 @@ $(function(){
 		
 		var img = $("<img/>")
 		img.addClass('img-circle');
-		img.attr("src", "/images/avatar/"+config.avaratnum+".jpeg");
+		img.attr("src", "/images/avatar/"+msg.avatarnum+".jpeg");
 		avatar.append(img);
 		
 		var tip = $("<p></p>");
