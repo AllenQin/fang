@@ -19,7 +19,7 @@ $this->registerJsFile('/js/message.js', ['depends' => JqueryAsset::className()])
 }
 .message
 {
-    width:100%;
+    width:95%;
     height:260px;
     background:#fafafa;
     border-radius:6px;
