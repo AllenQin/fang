@@ -90,6 +90,13 @@ $this->registerJsFile('/js/message.js', ['depends' => JqueryAsset::className()])
 <legend>消息</legend>
 <div class="message">
 	<ul>
+		<?php foreach ($history as $key => $value):?>
+	    <li class="tip">
+		<p class="avatar"><img class="img-circle" src="/images/avatar/<?php echo rand(1, 3)?>.jpeg"></p>
+		<p class="msg-tip">
+		<p class="content"><?php echo $value['content'];?></p>
+		</li>
+		<?php endforeach;?>
 	</ul>
 </div>
 

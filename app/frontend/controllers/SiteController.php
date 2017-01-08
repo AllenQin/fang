@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\Message;
 
 /**
  * Site controller
@@ -148,11 +149,18 @@ class SiteController extends Controller
      */
     public function actionLive($room = 32)
     {
+        $list = Message::find()
+        ->asArray()
+        ->limit(4)
+        ->all();
+        
         $data = [
             'rtmpurl' => Yii::$app->params['rtmp_url'],
             'streamurl' => '/20170108.m3u8',
             'room' => $room,
+            'history' => $list,
         ];
+        
         return $this->render('live', $data);
     }
 

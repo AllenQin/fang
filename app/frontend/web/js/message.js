@@ -22,13 +22,6 @@ $(function(){
 	ws = new WebSocket(socketurl);
 	ws.onmessage = function(evt){
 	    var msg = JSON.parse(evt.data);
-	    /*
-	    <li class="tip">
-		<p class="avatar"><img class="img-circle" src="/images/avatar/1.jpeg"></p>
-		<p class="msg-tip">
-		<p class="content">Hi.</p>
-		</li>
-		*/
 	    if ($(".message ul li").length > 3) {
 	    		$(".message ul li").eq(0).fadeOut(300, function(){$(this).remove()});
 	    } 
